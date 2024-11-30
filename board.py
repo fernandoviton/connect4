@@ -27,6 +27,30 @@ class Connect4Board:
     def set_cell(self, row, column, value):
         self.board[row][column] = value
 
+    # Adds a value to the column.  The value should be added to the first empty cell in the column
+    # Returns False if the column is full, True otherwise
+    def add_to_column(self, column, value):
+        # Add in reverse as the bottom most empty row is the one it will be inserted in
+        for row in range(self.rows - 1, -1, -1):
+            if self.board[row][column] == 0:
+                self.board[row][column] = value
+                return True
+        return False
+    
+    def is_valid_column(self, column):
+        return 0 <= column < self.columns
+    
+    def is_column_full(self, column):
+        return self.board[0][column] != 0
+    
+    # Returns the top most empty row of the specified column,
+    # returns -1 if the column is full
+    def top_non_empty_row_in_column(self, column):
+        for row in range(self.rows):
+            if self.board[row][column] != 0:
+                return row
+        return -1
+
     # def is_full(self):
     #     for row in self.board:
     #         for cell in row:
