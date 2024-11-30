@@ -2,6 +2,9 @@
 # this only has the data structure and no game logic
 # the value in the cells in the board are 0 or 1
 class Connect4Board:
+    RED = 1
+    YELLOW = 2
+    
     def __init__(self, rows=6, columns=7):
         self.board = [[0 for _ in range(columns)] for _ in range(rows)]
         self.rows = rows

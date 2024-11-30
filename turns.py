@@ -2,13 +2,7 @@ from board import Connect4Board
 
 GAME_SIZE = 10
 
-def create_empty_matrix(size):
-    return [[0 for _ in range(size)] for _ in range(size)]
-
-
-def my_turn(board):
-    column = int(input("Please enter a number: "))
-    print(f"You entered: {column}")
+def take_turn(board, color, column):
     row = 0
     for row in range(board.rows):
         if board.get_cell(row, column) != 0: 
@@ -16,20 +10,56 @@ def my_turn(board):
             break
     if row > 0:
         board.set_cell(row, column, 1)
-
-def check_for_winner(board, row, column, number):
-    for row in range(board.rows):
-        pass
+    return row
     
-    return True
 
-def take_turns(board):
+
+def my_turn(board):
+    column = int(input("Please enter a number: "))
+    print(f"You entered: {column}")
+    take_turn(board, board.RED, column)
+
+def check_for_winner(board, row, col):
+    if check_vertical(board, row, col) == True: return True
+    if check_horizontal(board, row, col) == True: return True
+    if check_diag_right(board, row, col) == True: return True
+    if check_diag_left(board, row, col) == True: return True
+    return False
+
+def check_horizontal(board, row, col): return True
+def check_diag_right(board, row, col): return True
+def check_diag_left(board, row, col): return True
+
+def check_vertical(board, row, col):
+    count = 0
+    color = board.get_cell(row, col)
+    row_dir = 1
+    i = row + row_dir
+    while i < board.rows: 
+        if board.get_cell(i, col) == color: 
+            count += 1
+            i += row_dir
+        else:
+            break
+    row_dir = -1
+    i = row + row_dir
+    while i >= 0:
+        if board.get_cell(i, col) == color:
+            count += 1
+            i += row_dir
+        else:
+            break
+    if count >= 4: return True
+    return False
+
+
+def play_game(board):
     while True: 
         my_turn(board)
         my_turn(board)
         my_turn(board)
         my_turn(board)
-        if check_for_winner(board, 0, 0, 0) == True:
+        if check_for_winner(board, 0, 0) == True:
             print(f"You win!")
             break
 
@@ -44,7 +74,7 @@ def print_board(board):
 if __name__ == "__main__":
     board = Connect4Board(rows=6, columns=7)
     #matrix = create_empty_matrix(GAME_SIZE)
-    take_turns(board)
+    play_game(board)
     print_board(board)
 
     #for row in matrix:
