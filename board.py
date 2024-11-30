@@ -33,6 +33,12 @@ class Connect4Board:
                 self.board[row][column] = value
                 return True
         return False
+    
+    def is_valid_column(self, column):
+        return 0 <= column < self.columns
+    
+    def is_column_full(self, column):
+        return self.board[0][column] != 0
 
     # def is_full(self):
     #     for row in self.board:
