@@ -1,6 +1,3 @@
-# main.py
-print("Hello, World!")
-
 GAME_SIZE = 10
 
 def create_empty_matrix(size):
@@ -36,15 +33,11 @@ def take_turns(matrix):
             break
 
 # Example usage
-matrix = create_empty_matrix(GAME_SIZE)
-take_turns(matrix)
 
-for row in matrix:
-    print(row)
+if __name__ == "__main__":
+    matrix = create_empty_matrix(GAME_SIZE)
+    take_turns(matrix)
 
+    for row in matrix:
+        print(row)
 
-#def get_random_number():
- #   return 4 # random.randint(1, 10) 
-    
-# Example usage 
-#print(get_random_number())
