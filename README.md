@@ -13,8 +13,8 @@ python main.py
 ```
 
 # contribute
-1. do steps above, then 
-2. ` git pull` to make sure you 
+1. do steps above, then repeat the following:
+2. ` git pull` to make sure you have the latest
 3. make any changes you want, for now make sure we don't change files others are chaning
 4. when ready:
    ```
