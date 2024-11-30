@@ -39,6 +39,14 @@ class Connect4Board:
     
     def is_column_full(self, column):
         return self.board[0][column] != 0
+    
+    # Returns the top most empty row of the specified column,
+    # returns -1 if the column is full
+    def top_non_empty_row_in_column(self, column):
+        for row in range(self.rows):
+            if self.board[row][column] != 0:
+                return row
+        return -1
 
     # def is_full(self):
     #     for row in self.board:

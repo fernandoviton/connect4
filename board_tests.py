@@ -44,5 +44,13 @@ class TestConnect4Board(unittest.TestCase):
         board.add_to_column(0, 1)
         self.assertTrue(board.is_column_full(0))
 
+    def test_top_non_empty_row_in_column(self):
+        board = Connect4Board(rows=2, columns=1)
+        self.assertEqual(board.top_non_empty_row_in_column(0), -1)
+        board.add_to_column(0, 1)
+        self.assertEqual(board.top_non_empty_row_in_column(0), 1)
+        board.add_to_column(0, 1)
+        self.assertEqual(board.top_non_empty_row_in_column(0), 0)
+
 if __name__ == "__main__":
     unittest.main()
