@@ -24,6 +24,16 @@ class Connect4Board:
     def set_cell(self, row, column, value):
         self.board[row][column] = value
 
+    # Adds a value to the column.  The value should be added to the first empty cell in the column
+    # Returns False if the column is full, True otherwise
+    def add_to_column(self, column, value):
+        # Add in reverse as the bottom most empty row is the one it will be inserted in
+        for row in range(self.rows - 1, -1, -1):
+            if self.board[row][column] == 0:
+                self.board[row][column] = value
+                return True
+        return False
+
     # def is_full(self):
     #     for row in self.board:
     #         for cell in row:

@@ -20,5 +20,14 @@ class TestConnect4Board(unittest.TestCase):
         self.assertEqual(board.rows, 2)
         self.assertEqual(board.columns, 5)
 
+    def test_add_to_column(self):
+        board = Connect4Board(rows=2, columns=4)
+        self.assertTrue(board.add_to_column(0, 1))
+        self.assertEqual(str(board), "0000\n1000")
+        self.assertTrue(board.add_to_column(0, 1))
+        self.assertEqual(str(board), "1000\n1000")
+        self.assertFalse(board.add_to_column(0, 1))
+        self.assertEqual(str(board), "1000\n1000")
+
 if __name__ == "__main__":
     unittest.main()
