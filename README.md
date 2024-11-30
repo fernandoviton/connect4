@@ -18,7 +18,13 @@ python main.py
 1. do steps above
 2. make any changes you want, for now make sure we don't change files others are chaning
 3. when ready:
+   if needed: 
+   ```
+   git add .
+   ```
+   then:
    ```
    git commit -am <message>
+   git pull
    git push origin head
    ```
