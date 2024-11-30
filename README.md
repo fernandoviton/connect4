@@ -2,10 +2,8 @@
 A project to play and solve for connect4 games
 
 # setup
-```
-install python 3.x
-install [git]([url](https://git-scm.com/downloads))
-```
+1. install python 3.x
+2. install [git](https://git-scm.com/downloads)
 
 # build
 ```
@@ -15,9 +13,10 @@ python main.py
 ```
 
 # contribute
-1. do steps above
-2. make any changes you want, for now make sure we don't change files others are chaning
-3. when ready:
+1. do steps above, then repeat the following:
+2. ` git pull` to make sure you have the latest
+3. make any changes you want, for now make sure we don't change files others are changing
+4. when ready:
    if needed: 
    ```
    git add .
