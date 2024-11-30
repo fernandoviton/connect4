@@ -2,6 +2,16 @@
 from board import Connect4Board
 from solver import next_move
 
+def get_valid_column_from_user(board):
+    while True:
+        column = int(input(f"Place piece in which column 0-{board.columns-1}?"))
+        if not board.is_valid_column(column):
+            print(f"Please choose a column between 0 and {board.columns-1}")
+        elif board.is_column_full(column):
+            print(f"Please choose a column that is not full")
+        else:
+            return column
+
 def game_loop(board):
     player_value=1
     computer_value=2
@@ -15,7 +25,7 @@ def game_loop(board):
             break
 
         # Player turn
-        player_column = int(input(f"Place piece in which column 0-{board.columns-1}?"))
+        player_column = get_valid_column_from_user(board)
         board.add_to_column(player_column, player_value)
 
         # Computer turn
