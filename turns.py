@@ -20,15 +20,40 @@ def my_turn(board):
     take_turn(board, board.RED, column)
 
 def check_for_winner(board, row, col):
-    if check_vertical(board, row, col) == True: return True
-    if check_horizontal(board, row, col) == True: return True
-    if check_diag_right(board, row, col) == True: return True
-    if check_diag_left(board, row, col) == True: return True
+    directions = [(1, 0), (0, 1), (1, 1), (1, -1)]
+    for d_row, d_col in directions:
+        if check_direction(board, row, col, d_row, d_col):
+            return True
     return False
+
+    # if check_vertical(board, row, col) == True: return True
+    # if check_horizontal(board, row, col) == True: return True
+    # if check_diag_right(board, row, col) == True: return True
+    # if check_diag_left(board, row, col) == True: return True
+
 
 def check_horizontal(board, row, col): return True
 def check_diag_right(board, row, col): return True
 def check_diag_left(board, row, col): return True
+
+def check_direction(board, row, col, d_row, d_col):
+    count = 0
+    color = board.get_cell(row, col)
+    r, c = row, col
+    while r < board.rows and c < board.cols and board[r][c] == color:
+        count += 1
+        r += d_row
+        c += d_col
+
+    # Check in the negative direction
+    r, c = row - d_row, col - d_col
+    while r >= 0 and c >= 0 and board.get_cell(r, c) == color:
+        count += 1
+        r -= d_row
+        c -= d_col
+
+    return count >= 4
+
 
 def check_vertical(board, row, col):
     count = 0
