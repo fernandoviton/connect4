@@ -26,15 +26,6 @@ def check_for_winner(board, row, col):
             return True
     return False
 
-    # if check_vertical(board, row, col) == True: return True
-    # if check_horizontal(board, row, col) == True: return True
-    # if check_diag_right(board, row, col) == True: return True
-    # if check_diag_left(board, row, col) == True: return True
-
-
-def check_horizontal(board, row, col): return True
-def check_diag_right(board, row, col): return True
-def check_diag_left(board, row, col): return True
 
 def check_direction(board, row, col, d_row, d_col):
     count = 0
