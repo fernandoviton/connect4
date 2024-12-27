@@ -31,7 +31,7 @@ def check_direction(board, row, col, d_row, d_col):
     count = 0
     color = board.get_cell(row, col)
     r, c = row, col
-    while r < board.rows and c < board.cols and board[r][c] == color:
+    while r < board.rows and c < board.columns and board.get_cell(r, c) == color:
         count += 1
         r += d_row
         c += d_col
