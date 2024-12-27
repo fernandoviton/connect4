@@ -12,6 +12,12 @@ cd connect4
 python main.py
 ```
 
+# run tests
+```
+python -m unittest
+```
+Note: test files must be named: test*.py for them to be discoverable. See https://docs.python.org/3/library/unittest.html#test-discovery
+
 # contribute
 1. do steps above, then repeat the following:
 2. ` git pull` to make sure you have the latest
