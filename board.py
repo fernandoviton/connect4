@@ -1,6 +1,9 @@
 # A data structure that represents a connect4 board
 # this only has the data structure and no game logic
 # the value in the cells in the board are 0 or 1
+from turns import check_for_winner
+
+
 class Connect4Board:
     RED = 1
     YELLOW = 2
@@ -50,6 +53,19 @@ class Connect4Board:
             if self.board[row][column] != 0:
                 return row
         return -1
+    
+    # Check if inserting at col wins the game.  Returns true if it does.
+    # Returns false if it doesn't or the column is full
+    def check_if_move_wins(board, col, color):
+        row = board.top_non_empty_row_in_column(col)
+        if row == -1:
+            return False
+        # TODO: for now modify the board and then change it back...
+        board.set_cell(row, col, color)
+        ret = check_for_winner(board, row, col)
+        board.set_cell(row, col, 0)
+        return ret
+
 
     # def is_full(self):
     #     for row in self.board:
